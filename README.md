@@ -36,8 +36,6 @@ export PYTHONPATH="${PYTHONPATH}:path/to/rbm-tdbn"
 - tDBN algorithm, extended to create an initial network and calculate the probabilities of a test dataset, developed by [José Monteiro]
 - RBM implementation in Python using Pytorch, used as a basis for the implementation here present, and developed by [Gabriel Bianconi], under the MIT License.
 
-Part of the structure and some functions in this repository are inspired by [Alex Lee]'s code, under the MIT License 
-
 <!-- Links -->
 
 [Gabriel Bianconi]: https://github.com/GabrielBianconi/pytorch-rbm
