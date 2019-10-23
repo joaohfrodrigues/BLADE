@@ -28,16 +28,19 @@ export PYTHONPATH="${PYTHONPATH}:path/to/rbm-tdbn"
 ```
 
 ### Future work
-- Test on Datasets other than BAIR
-- Train and infer without the need to save predictions datasets
+- 
 
 
 
 ## References
-- RBM implementation in Python, used as a basis for the RBM implementation here present, and developed by [Gabriel Bianconi] under the MIT License 
+- tDBN algorithm, extended to create an initial network and calculate the probabilities of a test dataset, developed by [José Monteiro]
+- RBM implementation in Python using Pytorch, used as a basis for the implementation here present, and developed by [Gabriel Bianconi], under the MIT License.
 
 Part of the structure and some functions in this repository are inspired by [Alex Lee]'s code, under the MIT License 
 
 <!-- Links -->
 
-[Gabriel Bianconi]: https://https://github.com/GabrielBianconi/pytorch-rbm
+[Gabriel Bianconi]: https://github.com/GabrielBianconi/pytorch-rbm
+
+[José Monteiro]: https://github.com/josemonteiro/tDBN
+
