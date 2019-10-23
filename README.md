@@ -17,7 +17,7 @@ The study of multivariate time-series is applied to a wide range of areas in soc
 2. Download the repository
 
 ```
-git clone https://github.com/joaor96/rbm-tdbn.git
+git clone https://github.com/joaor96/rbm-tdbn
 cd rbm-tdbn
 ```
 
