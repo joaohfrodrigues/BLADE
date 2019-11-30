@@ -25,6 +25,16 @@ cd rbm-tdbn
 export PYTHONPATH="${PYTHONPATH}:path/to/BLADE"
 ```
 
+3.1 Create a virtual environment with the packages required, that can be found on the file ```required_packages.txt```
+
+4. If using Anaconda, create a virtual environment with the packages required, that can be found on the file ```required_packages.txt```
+
+5. The runnning mode flag that is present in the file ```blade.py``` defines the running mode, with two different possible values:
+
+- "dev": used when running the code with the values defined on the file, for testing purposes.
+- "run": used when running the code through the command line, with the parameter values indicated by the user.
+
+
 ### Future work
 - 
 
