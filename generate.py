@@ -7,10 +7,10 @@ Created on Tue Oct  1 10:26:50 2019
 import numpy as np
 import pandas as pd
 
-n_instances = 1000
-n_time_points = 2
+n_instances = 400
+n_time_points = 5
 
-def generate_binomial_joao(n_instances,n_time_points):
+def generate_binomial_1(n_instances,n_time_points):
     n_features=2
 
     data = np.zeros([n_instances, n_features*n_time_points])
@@ -72,11 +72,11 @@ def generate_binomial_joao(n_instances,n_time_points):
                           columns=['label'])
     labels_df.index.name = 'subject_id'
     
-    df.to_csv('binomial_joao_1_'+str(n_time_points)+'_parsed.csv',quoting=1)
+    df.to_csv('binomial_1_'+str(n_time_points)+'_parsed.csv',quoting=1)
             
-    labels_df.to_csv('binomial_joao_1_'+str(n_time_points)+'_target.csv',quoting=1)
+    labels_df.to_csv('binomial_1_'+str(n_time_points)+'_target.csv',quoting=1)
 
-def generate_binomial_joao_2(n_instances,n_time_points):
+def generate_binomial_2(n_instances,n_time_points):
     n_features=5
 
     data = np.zeros([n_instances, n_features*n_time_points])
@@ -188,11 +188,11 @@ def generate_binomial_joao_2(n_instances,n_time_points):
                           columns=['label'])
     labels_df.index.name = 'subject_id'
     
-    df.to_csv('binomial_joao_2_'+str(n_time_points)+'_parsed.csv',quoting=1)
+    df.to_csv('binomial_2_'+str(n_time_points)+'_parsed.csv',quoting=1)
             
-    labels_df.to_csv('binomial_joao_2_'+str(n_time_points)+'_target.csv',quoting=1)
+    labels_df.to_csv('binomial_2_'+str(n_time_points)+'_target.csv',quoting=1)
 
-def generate_binomial_joao_3(n_instances,n_time_points):
+def generate_binomial_3(n_instances,n_time_points):
     n_features=5
 
     data = np.zeros([n_instances, n_features*n_time_points])
@@ -292,11 +292,11 @@ def generate_binomial_joao_3(n_instances,n_time_points):
                           columns=['label'])
     labels_df.index.name = 'subject_id'
     
-    df.to_csv('binomial_joao_3_'+str(n_time_points)+'_parsed.csv',quoting=1)
+    df.to_csv('binomial_3_'+str(n_time_points)+'_parsed.csv',quoting=1)
             
-    labels_df.to_csv('binomial_joao_3_'+str(n_time_points)+'_target.csv',quoting=1)
+    labels_df.to_csv('binomial_3_'+str(n_time_points)+'_target.csv',quoting=1)
 
-def generate_multinomial_joao(n_instances,n_time_points):
+def generate_multinomial_1(n_instances,n_time_points):
     n_features=3
 
     values=np.arange(3)
@@ -404,11 +404,11 @@ def generate_multinomial_joao(n_instances,n_time_points):
                           columns=['label'])
     labels_df.index.name = 'subject_id'
     
-    df.to_csv('multinomial_joao_1_'+str(n_time_points)+'_parsed.csv',quoting=1)
+    df.to_csv('multinomial_1_'+str(n_time_points)+'_parsed.csv',quoting=1)
             
-    labels_df.to_csv('multinomial_joao_1_'+str(n_time_points)+'_target.csv',quoting=1)
+    labels_df.to_csv('multinomial_1_'+str(n_time_points)+'_target.csv',quoting=1)
 
-def generate_multinomial_joao_2(n_instances,n_time_points):
+def generate_multinomial_2(n_instances,n_time_points):
     n_features=4
     
     values=np.arange(3)
@@ -495,15 +495,15 @@ def generate_multinomial_joao_2(n_instances,n_time_points):
                           columns=['label'])
     labels_df.index.name = 'subject_id'
     
-    df.to_csv('multinomial_joao_2_'+str(n_time_points)+'_parsed.csv',quoting=1)
+    df.to_csv('multinomial_2_'+str(n_time_points)+'_parsed.csv',quoting=1)
             
-    labels_df.to_csv('multinomial_joao_2_'+str(n_time_points)+'_target.csv',quoting=1)
+    labels_df.to_csv('multinomial_2_'+str(n_time_points)+'_target.csv',quoting=1)
 
-def generate_multinomial_joao_multiclass(n_instances,n_time_points):
-    n_features=4
+def generate_multiclass(n_instances,n_time_points):
+    n_features=10
     n_values = 4
     values=np.arange(n_values)
-    classes=np.arange(10)
+    classes=np.arange(6)
     data = np.zeros([n_instances, n_features*n_time_points])
     uniform=np.ones(n_values)/n_values
     uniform_class=np.ones(len(classes))/len(classes)
@@ -521,132 +521,140 @@ def generate_multinomial_joao_multiclass(n_instances,n_time_points):
         #LABEL 0
         if labels[i] == 0:
             data[i,0] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
-            if data[i,0] == 0:
-                data[i,1] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
+            data[i,1] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
+            data[i,2] = np.random.choice(values,p=[0.05,0.85,0.05,0.05])
+            data[i,3] = np.random.choice(values,p=[0.05,0.85,0.05,0.05])
             
             #THIS FOR TIME SLICE 1
             for t in range(n_time_points-1):
-                    data[i,t*n_features+n_features+0] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
-                    data[i,t*n_features+n_features+1] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
+                data[i,t*n_features+n_features+0] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
+                data[i,t*n_features+n_features+1] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
+                data[i,t*n_features+n_features+2] = np.random.choice(values,p=[0.05,0.85,0.05,0.05])
+                data[i,t*n_features+n_features+3] = np.random.choice(values,p=[0.05,0.85,0.05,0.05])
             
         #LABEL 1
         elif labels[i] == 1:
-            data[i,0] = np.random.choice(values,p=[0.05,0.05,0.85,0.05])
-            if data[i,0] == 2:
-                data[i,1] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
+            data[i,0] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
+            data[i,1] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
+            data[i,2] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
+            data[i,3] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
             
             #THIS FOR TIME SLICE 1
             for t in range(n_time_points-1):
-                if data[i,t*n_features+0] == 2 and data[i,t*n_features+1] == 3:
-                    data[i,t*n_features+n_features+0] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
-                    data[i,t*n_features+n_features+1] = np.random.choice(values,p=[0.05,0.05,0.85,0.05])
-                elif data[i,t*n_features+0] == 3 and data[i,t*n_features+1] == 2:
-                    data[i,t*n_features+n_features+0] = np.random.choice(values,p=[0.05,0.05,0.85,0.05])
-                    data[i,t*n_features+n_features+1] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
-                else:
-                    data[i,t*n_features+n_features+0] = np.random.choice(values,p=[0.05,0.05,0.45,0.45])
-                    data[i,t*n_features+n_features+1] = np.random.choice(values,p=[0.05,0.05,0.45,0.45])
+                data[i,t*n_features+n_features+0] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
+                data[i,t*n_features+n_features+1] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
+                data[i,t*n_features+n_features+2] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
+                data[i,t*n_features+n_features+3] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
+                
         #LABEL 2
         elif labels[i] == 2:
-            data[i,1] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
-            if data[i,1] == 0:
-                data[i,2] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
+            data[i,2] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
+            data[i,3] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
+            data[i,4] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
+            data[i,5] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
             
             #THIS FOR TIME SLICE 1
             for t in range(n_time_points-1):
-                if data[i,t*n_features+1] == 0 and data[i,t*n_features+2] == 3:
-                    data[i,t*n_features+n_features+1] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
-                    data[i,t*n_features+n_features+2] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
-                elif data[i,t*n_features+1] == 3 and data[i,t*n_features+2] == 0:
-                    data[i,t*n_features+n_features+1] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
-                    data[i,t*n_features+n_features+2] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])                    
-                else:
-                    data[i,t*n_features+n_features+1] = np.random.choice(values,p=[0.45,0.05,0.05,0.45])
-                    data[i,t*n_features+n_features+2] = np.random.choice(values,p=[0.45,0.05,0.05,0.45])
+                data[i,t*n_features+n_features+2] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
+                data[i,t*n_features+n_features+3] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
+                data[i,t*n_features+n_features+4] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
+                data[i,t*n_features+n_features+5] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
         #LABEL 3
         elif labels[i] == 3:
-            data[i,1] = np.random.choice(values,p=[0.05,0.85,0.05,0.05])
-            if data[i,1] == 1:
-                data[i,2] = np.random.choice(values,p=[0.05,0.85,0.05,0.05])
+            data[i,2] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
+            data[i,3] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
+            data[i,4] = np.random.choice(values,p=[0.05,0.05,0.85,0.05])
+            data[i,5] = np.random.choice(values,p=[0.05,0.05,0.85,0.05])
             
             #THIS FOR TIME SLICE 1
             for t in range(n_time_points-1):
-                    data[i,t*n_features+n_features+1] = np.random.choice(values,p=[0.05,0.85,0.05,0.05])
-                    data[i,t*n_features+n_features+2] = np.random.choice(values,p=[0.05,0.85,0.05,0.05])
+                data[i,t*n_features+n_features+2] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
+                data[i,t*n_features+n_features+3] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
+                data[i,t*n_features+n_features+4] = np.random.choice(values,p=[0.05,0.05,0.85,0.05])
+                data[i,t*n_features+n_features+5] = np.random.choice(values,p=[0.05,0.05,0.85,0.05])
         #LABEL 4
         elif labels[i] == 4:
-            data[i,0] = np.random.choice(values,p=[0.05,0.85,0.05,0.05])
-            if data[i,0] == 1:
-                data[i,2] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
+            data[i,4] = np.random.choice(values,p=[0.05,0.05,0.85,0.05])
+            data[i,5] = np.random.choice(values,p=[0.05,0.05,0.85,0.05])
+            data[i,6] = np.random.choice(values,p=[0.05,0.85,0.05,0.05])
+            data[i,7] = np.random.choice(values,p=[0.05,0.85,0.05,0.05])
             
             #THIS FOR TIME SLICE 1
             for t in range(n_time_points-1):
-                if data[i,t*n_features+0] == 1 and data[i,t*n_features+2] == 0:
-                    data[i,t*n_features+n_features+0] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
-                    data[i,t*n_features+n_features+2] = np.random.choice(values,p=[0.05,0.85,0.05,0.05])
-                elif data[i,t*n_features+0] == 0 and data[i,t*n_features+2] == 1:
-                    data[i,t*n_features+n_features+0] = np.random.choice(values,p=[0.05,0.85,0.05,0.05])
-                    data[i,t*n_features+n_features+2] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
-                else:
-                    data[i,t*n_features+n_features+0] = np.random.choice(values,p=[0.45,0.45,0.05,0.05])
-                    data[i,t*n_features+n_features+2] = np.random.choice(values,p=[0.45,0.45,0.05,0.05])
+                data[i,t*n_features+n_features+4] = np.random.choice(values,p=[0.05,0.05,0.85,0.05])
+                data[i,t*n_features+n_features+5] = np.random.choice(values,p=[0.05,0.05,0.85,0.05])
+                data[i,t*n_features+n_features+6] = np.random.choice(values,p=[0.05,0.85,0.05,0.05])
+                data[i,t*n_features+n_features+7] = np.random.choice(values,p=[0.05,0.85,0.05,0.05])
+                
         #LABEL 5
         elif labels[i] == 5:
-            data[i,2] = np.random.choice(values,p=[0.05,0.05,0.85,0.05])
-            if data[i,2] == 2:
-                data[i,3] = np.random.choice(values,p=[0.05,0.05,0.85,0.05])
+            data[i,4] = np.random.choice(values,p=[0.05,0.05,0.85,0.05])
+            data[i,5] = np.random.choice(values,p=[0.05,0.05,0.85,0.05])
+            data[i,6] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
+            data[i,7] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
             
             #THIS FOR TIME SLICE 1
             for t in range(n_time_points-1):
-                    data[i,t*n_features+n_features+2] = np.random.choice(values,p=[0.05,0.05,0.85,0.05])
-                    data[i,t*n_features+n_features+3] = np.random.choice(values,p=[0.05,0.05,0.85,0.05])
+                data[i,t*n_features+n_features+4] = np.random.choice(values,p=[0.05,0.05,0.85,0.05])
+                data[i,t*n_features+n_features+5] = np.random.choice(values,p=[0.05,0.05,0.85,0.05])
+                data[i,t*n_features+n_features+6] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
+                data[i,t*n_features+n_features+7] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
+                
         #LABEL 6
         elif labels[i] == 6:
-            data[i,2] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
-            if data[i,2] == 0:
-                data[i,3] = np.random.choice(values,p=[0.05,0.85,0.05,0.05])
+            data[i,6] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
+            data[i,7] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
+            data[i,8] = np.random.choice(values,p=[0.05,0.85,0.05,0.05])
+            data[i,9] = np.random.choice(values,p=[0.05,0.85,0.05,0.05])
             
             #THIS FOR TIME SLICE 1
             for t in range(n_time_points-1):
-                if data[i,t*n_features+2] == 0 and data[i,t*n_features+3] == 1:
-                    data[i,t*n_features+n_features+2] = np.random.choice(values,p=[0.05,0.85,0.05,0.05])
-                    data[i,t*n_features+n_features+3] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
-                elif data[i,t*n_features+2] == 1 and data[i,t*n_features+3] == 0:
-                    data[i,t*n_features+n_features+2] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
-                    data[i,t*n_features+n_features+3] = np.random.choice(values,p=[0.05,0.85,0.05,0.05])
-                else:
-                    data[i,t*n_features+n_features+2] = np.random.choice(values,p=[0.45,0.45,0.05,0.05])
-                    data[i,t*n_features+n_features+3] = np.random.choice(values,p=[0.45,0.45,0.05,0.05])
+                data[i,t*n_features+n_features+6] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
+                data[i,t*n_features+n_features+7] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
+                data[i,t*n_features+n_features+8] = np.random.choice(values,p=[0.05,0.85,0.05,0.05])
+                data[i,t*n_features+n_features+9] = np.random.choice(values,p=[0.05,0.85,0.05,0.05])
+                
         #LABEL 7
         elif labels[i] == 7:
-            data[i,3] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
-            if data[i,3] == 0:
-                data[i,0] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
+            data[i,7] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
+            data[i,6] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
+            data[i,8] = np.random.choice(values,p=[0.05,0.05,0.85,0.05])
+            data[i,9] = np.random.choice(values,p=[0.05,0.05,0.85,0.05])
             
             #THIS FOR TIME SLICE 1
             for t in range(n_time_points-1):
-                    data[i,t*n_features+n_features+3] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
-                    data[i,t*n_features+n_features+0] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
+                data[i,t*n_features+n_features+6] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
+                data[i,t*n_features+n_features+7] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
+                data[i,t*n_features+n_features+8] = np.random.choice(values,p=[0.05,0.05,0.85,0.05])
+                data[i,t*n_features+n_features+9] = np.random.choice(values,p=[0.05,0.05,0.85,0.05])
+                
         #LABEL 8
         elif labels[i] == 8:
-            data[i,3] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
-            if data[i,3] == 3:
-                data[i,1] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
+            data[i,0] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
+            data[i,1] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
+            data[i,8] = np.random.choice(values,p=[0.05,0.05,0.85,0.05])
+            data[i,9] = np.random.choice(values,p=[0.05,0.05,0.85,0.05])
             
             #THIS FOR TIME SLICE 1
             for t in range(n_time_points-1):
-                    data[i,t*n_features+n_features+3] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
-                    data[i,t*n_features+n_features+1] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
+                data[i,t*n_features+n_features+0] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
+                data[i,t*n_features+n_features+1] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
+                data[i,t*n_features+n_features+8] = np.random.choice(values,p=[0.05,0.05,0.85,0.05])
+                data[i,t*n_features+n_features+9] = np.random.choice(values,p=[0.05,0.05,0.85,0.05])
+                
         #LABEL 9
         elif labels[i] == 9:
-            data[i,2] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
-            if data[i,2] == 3:
-                data[i,0] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
+            data[i,0] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
+            data[i,1] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
+            data[i,8] = np.random.choice(values,p=[0.05,0.05,0.85,0.05])
+            data[i,9] = np.random.choice(values,p=[0.05,0.85,0.05,0.05])
             
             #THIS FOR TIME SLICE 1
             for t in range(n_time_points-1):
-                    data[i,t*n_features+n_features+2] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
-                    data[i,t*n_features+n_features+0] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
+                data[i,t*n_features+n_features+0] = np.random.choice(values,p=[0.05,0.05,0.05,0.85])
+                data[i,t*n_features+n_features+1] = np.random.choice(values,p=[0.85,0.05,0.05,0.05])
+                data[i,t*n_features+n_features+8] = np.random.choice(values,p=[0.05,0.05,0.85,0.05])
+                data[i,t*n_features+n_features+9] = np.random.choice(values,p=[0.05,0.85,0.05,0.05])
 
                 
     col = []
@@ -665,12 +673,12 @@ def generate_multinomial_joao_multiclass(n_instances,n_time_points):
                           columns=['label'])
     labels_df.index.name = 'subject_id'
     
-    df.to_csv('multinomial_joao_parsed.csv',quoting=1)
+    df.to_csv('multiclass_'+str(len(classes))+'_parsed.csv',quoting=1)
             
-    labels_df.to_csv('multinomial_joao_target.csv',quoting=1)
+    labels_df.to_csv('multiclass_'+str(len(classes))+'_target.csv',quoting=1)
 
 
-def generate_binomial_joao_4(n_instances,n_time_points):
+def generate_binomial_4(n_instances,n_time_points):
     n_features=10
 
     data = np.zeros([n_instances, n_features*n_time_points])

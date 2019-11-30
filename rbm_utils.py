@@ -131,12 +131,13 @@ def create_parser(*args):
         Parser which will be use to extract the information.
     '''
     parser = argparse.ArgumentParser()
-    parser.add_argument('model_type')
-    parser.add_argument('data_file')
-    parser.add_argument('-hu','--hidden_units', type=int, default=50, help='set the number of hidden units')
+    parser.add_argument('task')
+    parser.add_argument('filepath')
+    parser.add_argument('-tdbnp','--tdbn_parents', type=int, default=1, help='set the number of parent nodes to be considered by tDBN')
+    parser.add_argument('-hu','--hidden_units', type=int, default=3, help='set the number of hidden units')
     parser.add_argument('-bs','--batch_size_ratio', type=float, default = 0.1, help='set the batch size ratio')
     parser.add_argument('-cd','--contrastive_divergence', type=int, default=1, help='set k in cd-k')
-    parser.add_argument('-e','--epochs', type=int, default = 30, help='set the number of epochs')
+    parser.add_argument('-e','--epochs', type=int, default = 100, help='set the number of epochs')
     parser.add_argument('-lr','--learning_rate', type=float, default = 0.05, help='set the learning rate')
     parser.add_argument('-wd','--weight_decay', type=float, default = 1e-4, help='set the weight decay')
     parser.add_argument('-tsr','--test_set_ratio', type=float, default = 0.2, help='set the ratio for the test set')
@@ -144,7 +145,10 @@ def create_parser(*args):
     parser.add_argument('-pcd','--persistent_cd', type=bool, default = False, help='activate persistent contrastive divergence')
     parser.add_argument('-v','--version',action='version', version='%(prog)s 2.0')
     parser.add_argument('-vb','--verbose',dest='verbose', default = False, action='store_true',help='enables additional printing')
-    parser.add_argument('-nr','--number_runs', type=int, default = 1, help='number of repetitions')
+    parser.add_argument('-nr','--number_runs', type=int, default = 10, help='number of repetitions')
+    parser.add_argument('-vr','--validation_runs', type=int, default = 5, help='number of repetitions on the validation cycle')
+    parser.add_argument('-er','--extraction_runs', type=int, default = 5, help='number of extractions in each validation cycle')
+    parser.add_argument('-nrbm','--no_rbm', type=bool, default = False, help='if True, RBM is not used')
     return parser
 
 def count_labels(filepath):
