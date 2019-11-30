@@ -31,8 +31,8 @@ cd rbm-tdbn
 
 5. The runnning mode flag that is present in the file ```blade.py``` defines the running mode, with two different possible values:
 
-- "dev": used when running the code with the values defined on the file, for testing purposes.
-- "run": used when running the code through the command line, with the parameter values indicated by the user.
+    - "dev": used when running the code with the values defined on the file, for testing purposes.
+    - "run": used when running the code through the command line, with the parameter values indicated by the user.
 
 
 ### Future work
