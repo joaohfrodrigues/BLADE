@@ -25,7 +25,7 @@ cd rbm-tdbn
 export PYTHONPATH="${PYTHONPATH}:path/to/BLADE"
 ```
 
-    3.1. Create a virtual environment with the packages required, that can be found on the file ```required_packages.txt```
+  1. Create a virtual environment with the packages required, that can be found on the file ```required_packages.txt```
 
 4. If using Anaconda, create a virtual environment with the packages required, that can be found on the file ```required_packages.txt```
 
