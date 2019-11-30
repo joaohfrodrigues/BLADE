@@ -19,13 +19,13 @@ git clone https://github.com/joaor96/rbm-tdbn
 cd rbm-tdbn
 ```
 
-3. If using python >= 3.6, add the root directory to the PYTHONPATH
+3. If using python >= 3.6:
 
-```
-export PYTHONPATH="${PYTHONPATH}:path/to/BLADE"
-```
-
-  1. Create a virtual environment with the packages required, that can be found on the file ```required_packages.txt```
+    1. Add the root directory to the PYTHONPATH
+    ```
+    export PYTHONPATH="${PYTHONPATH}:path/to/BLADE"
+    ```
+    2. Create a virtual environment with the packages required, that can be found on the file ```required_packages.txt```
 
 4. If using Anaconda, create a virtual environment with the packages required, that can be found on the file ```required_packages.txt```
 
