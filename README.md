@@ -38,7 +38,7 @@ cd rbm-tdbn
 
 The different parameters that can be specified when running the BLADE algorithm are presented in the table below.
 
-| parameter                  |         |       | default              | description                                                                                                                                                                 |
+| parameter                  | parameter code        |       | default              | description                                                                                                                                                                 |
 |----------------------------|---------|-------------|----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | filepath                   |         | :heavy_check_mark: | \-\-                 | file path for both the data file \(filepath\+\``\\\_parsed\.csv''\) and the labels file \(filepath \+ ``\\\_labels\.csv''\)                                                 |
 | tdbn\\\_parents            | \-tdbnp |             | 1                    | set the number of parent nodes to be considered by the \\acrshort\{tdbn\} algorithm                                                                                         |
