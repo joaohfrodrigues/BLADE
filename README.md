@@ -38,7 +38,25 @@ cd rbm-tdbn
 
 The different parameters that can be specified when running the BLADE algorithm are presented in the table below.
 
---insert table
+| parameter                  |         |             | default              | description                                                                                                                                                                 |
+|----------------------------|---------|-------------|----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| filepath                   |         | \\checkmark | \-\-                 | file path for both the data file \(filepath\+\``\\\_parsed\.csv''\) and the labels file \(filepath \+ ``\\\_labels\.csv''\)                                                 |
+| tdbn\\\_parents            | \-tdbnp |             | 1                    | set the number of parent nodes to be considered by the \\acrshort\{tdbn\} algorithm                                                                                         |
+| no\\\_rbm                  | \-nrbm  |             | \\texttt\{False\}    | if the user wishes to run the method without the \\acrshort\{rbm\} pre\-processing, he should indicate it by placing this parameter on the input                            |
+| test\\\_set\\\_ratio       | \-tsr   |             | 0\.2                 | ratio of the original data to be used for testing                                                                                                                           |
+| validation\\\_set\\\_ratio | \-vsr   |             | 0\.2                 | ratio of the pre\-training dataset to be used for validation                                                                                                                |
+| batch\\\_size\\\_ratio     | \-bsr   |             | 0\.1                 | ratio to be used when splitting the training set in mini\-batches for the \\acrshort\{cd\} algorithm                                                                        |
+| hidden\\\_units            | \-hu    |             | 3                    | number of hidden units to be used in the \\acrshort\{rbm\}s                                                                                                                 |
+| epochs                     | \-e     |             | 100                  | defines the number of iterations in the \\acrshort\{cd\}\-1 algorithm                                                                                                       |
+| learning\\\_rate           | \-lr    |             | 0\.05                | learning rate for the \\acrshort\{rbm\}                                                                                                                                     |
+| weight\\\_decay            | \-wd    |             | $1\\times10^\{\-4\}$ | weight decay value when training the \\acrshort\{rbm\}                                                                                                                      |
+| persistent\\\_cd           | \-pcd   |             | \\texttt\{False\}    | defines the usage of persistent \\acrshort\{cd\}\.                                                                                                                          |
+| number\\\_runs             | \-nr    |             | 10                   | since the accuracy has a variance associated, increasing the number of runs of the algorithm ensures that a better approximation of the actual accuracy value is calculated |
+| validation\\\_runs         | \-vr    |             | 5                    | number of validation runs                                                                                                                                                   |
+| extraction\\\_runs         | \-er    |             | 5                    | number of extractions in each validation cycle                                                                                                                              |
+| verbose                    | \-vb    |             | \\texttt\{False\}    | if \\texttt\{True\}, it prints the results of training the \\acrshort\{rbm\} and \\acrshort\{tdbn\} while the \\acrshort\{blade\} algorithm is running                      |
+| version                    | \-v     |             | \-\-                 | prints the current version of the \\acrshort\{blade\} implementation                                                                                                        |
+
 
 ### Future work
 - 
