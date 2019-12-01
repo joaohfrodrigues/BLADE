@@ -38,9 +38,9 @@ cd rbm-tdbn
 
 The different parameters that can be specified when running the BLADE algorithm are presented in the table below.
 
-| parameter                  |         |             | default              | description                                                                                                                                                                 |
+| parameter                  |         |  mandatory           | default              | description                                                                                                                                                                 |
 |----------------------------|---------|-------------|----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| filepath                   |         | \\checkmark | \-\-                 | file path for both the data file \(filepath\+\``\\\_parsed\.csv''\) and the labels file \(filepath \+ ``\\\_labels\.csv''\)                                                 |
+| filepath                   |         | :heavy_check_mark: | \-\-                 | file path for both the data file \(filepath\+\``\\\_parsed\.csv''\) and the labels file \(filepath \+ ``\\\_labels\.csv''\)                                                 |
 | tdbn\\\_parents            | \-tdbnp |             | 1                    | set the number of parent nodes to be considered by the \\acrshort\{tdbn\} algorithm                                                                                         |
 | no\\\_rbm                  | \-nrbm  |             | \\texttt\{False\}    | if the user wishes to run the method without the \\acrshort\{rbm\} pre\-processing, he should indicate it by placing this parameter on the input                            |
 | test\\\_set\\\_ratio       | \-tsr   |             | 0\.2                 | ratio of the original data to be used for testing                                                                                                                           |
