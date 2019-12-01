@@ -34,6 +34,11 @@ cd rbm-tdbn
     - "dev": used when running the code with the values defined on the file, for testing purposes.
     - "run": used when running the code through the command line, with the parameter values indicated by the user.
 
+6. If running in terminal, input the following:
+
+    ```
+    blade.py 1 example_data/binomial_1_2 -options
+    ```
 #### Parameters
 
 The different parameters that can be specified when running the BLADE algorithm are presented in the table below.
