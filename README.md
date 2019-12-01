@@ -37,7 +37,7 @@ cd rbm-tdbn
 6. If running in terminal, input the following:
 
     ```
-    blade.py 1 example_data/binomial_1_2 -options
+    blade.py <filepath> <options>
     ```
 #### Parameters
 
